@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Coaching Record - F1 C02 Requirement Dependency Chain</title>
+<style>
+body{font-family:Arial;line-height:1.7;max-width:1000px;margin:auto}
+h1{color:#0b5394}
+h2{color:#38761d;border-bottom:1px solid #ddd}
+.question{background:#eef6ff;padding:10px;border-left:5px solid #4a86e8;margin-top:12px}
+.answer{background:#f7fff2;padding:10px;border-left:5px solid #6aa84f}
+.diagnosis{background:#fff8dc;padding:10px;border-left:5px solid orange}
+.refinement{background:#f4f4f4;padding:10px;border-left:5px solid gray}
+.principle{background:#f5ecff;padding:10px;border-left:5px solid purple}
+.newsletter{background:#fef3c7;padding:10px;border-left:5px solid #b8860b}
+pre{background:#f8f8f8;padding:10px}
+</style>
+</head>
+<body>
+
+<h1>Fundamental 1 – Chapter 2 – Requirement Dependency Chain</h1>
+<p><b>Coaching Record</b></p>
+
+<h2>Conversation 1 – What is a dependency?</h2>
+
+<div class="question">
+<b>Coach</b><br>
+When we say Functional Requirements depend on Business Objectives, what does the word <i>dependency</i> actually mean?
+</div>
+
+<div class="answer">
+<b>Student</b><br>
+A depends on B because A can make decisions based on the information provided by B.
+</div>
+
+<div class="diagnosis">
+<b>Diagnosis</b><br>
+The reasoning correctly identified information flow, but the definition was incomplete. A dependency is more than information transfer—it reduces uncertainty and constrains downstream decisions.
+</div>
+
+<div class="refinement">
+<b>Architect Refinement</b><br>
+A depends on B because B provides the context, constraints and clarity required for A to make informed decisions. Without B, A relies on assumptions rather than evidence.
+</div>
+
+<div class="principle">
+<b>Architecture Principle</b><br>
+Dependencies exist to reduce uncertainty before decisions are made.
+</div>
+
+<div class="newsletter">
+<b>Newsletter Opportunity</b><br>
+Frameworks Are Really Dependency Graphs.
+</div>
+
+<hr>
+
+<h2>Conversation 2 – Information vs Constraints</h2>
+
+<div class="question">
+<b>Coach</b><br>
+Does only information flow downward through the dependency chain, or do constraints also flow downward?
+</div>
+
+<div class="answer">
+<b>Student</b><br>
+Both information and constraints flow downward.
+</div>
+
+<div class="diagnosis">
+<b>Diagnosis</b><br>
+Correct reasoning. The discussion expanded the meaning of dependency from information sharing to decision boundaries.
+</div>
+
+<div class="refinement">
+<b>Architect Refinement</b><br>
+Every upstream decision establishes the context and constraints for downstream decisions. Architects inherit these constraints rather than redefining them at every stage.
+</div>
+
+<div class="principle">
+<b>Architecture Principle</b><br>
+Context, information and constraints propagate through the dependency chain.
+</div>
+
+<hr>
+
+<h2>Conversation 3 – Why does the order matter?</h2>
+
+<div class="question">
+<b>Coach</b><br>
+Why can't we change the order of the framework? Why isn't it just a checklist?
+</div>
+
+<div class="answer">
+<b>Student</b><br>
+Each stage influences the next one. Downstream decisions rely on upstream information to avoid assumptions.
+</div>
+
+<div class="diagnosis">
+<b>Diagnosis</b><br>
+Good reasoning. The understanding shifted from memorizing a sequence to recognizing causal relationships.
+</div>
+
+<div class="refinement">
+<b>Architect Refinement</b><br>
+The framework is a dependency graph, not a checklist. Every layer answers a different architectural question:
+<pre>
+Business Objective
+        ↓
+Functional Requirements
+        ↓
+Non-Functional Requirements
+        ↓
+Scale Estimation
+        ↓
+Architecture
+</pre>
+Removing or reordering a layer increases uncertainty and leads to weaker architectural decisions.
+</div>
+
+<div class="principle">
+<b>Architecture Principle</b><br>
+Architectures are built on dependencies, not checklists.
+</div>
+
+<div class="newsletter">
+<b>Newsletter Opportunity</b><br>
+Why System Design Frameworks Should Be Read as Dependency Graphs, Not Ordered Lists.
+</div>
+
+<hr>
+
+<h2>Learning Capture</h2>
+
+<ul>
+<li>Moved beyond memorizing the framework to understanding why the order exists.</li>
+<li>Recognized that each stage reduces uncertainty for the next stage.</li>
+<li>Learned that dependencies transfer context, information and constraints—not just data.</li>
+<li>Established the dependency chain as a reusable mental model for future architecture discussions.</li>
+</ul>
+
+</body>
+</html>
