@@ -1,74 +1,133 @@
 $RepoRoot = "E:\Sujata-Workspace\architect-knowledge-base"
 
 $Incoming = Join-Path $RepoRoot "incoming"
-$FundamentalFolder = "F3_Common_System_Design_Building_Blocks"
-$Destination = Join-Path $RepoRoot "fundamentals\$FundamentalFolder\Sessions"
+$Fundamentals = Join-Path $RepoRoot "Fundamentals"
 
 if (!(Test-Path $Incoming)) {
     Write-Host "Incoming folder not found."
     exit 1
 }
 
-if (!(Test-Path $Destination)) {
-    Write-Host "Destination folder not found."
-    exit 1
-}
+# ---------------------------------------------------------
+# Find downloaded packages
+# ---------------------------------------------------------
 
-$Sessions = Get-ChildItem $Incoming -Directory -Filter "Session_*"
+$Packages = Get-ChildItem $Incoming -Directory
 
-if ($Sessions.Count -eq 0) {
-    Write-Host "No Session_xxx folders found in incoming."
+if ($Packages.Count -eq 0) {
+    Write-Host "No package found in incoming."
     exit 0
 }
 
-foreach ($Session in $Sessions) {
+foreach ($Package in $Packages)
+{
+    Write-Host ""
+    Write-Host "======================================="
+    Write-Host "Processing Package:"
+    Write-Host $Package.Name
+    Write-Host "======================================="
 
-    $Readme = Join-Path $Session.FullName "README.md"
-    $Transcript = Join-Path $Session.FullName "Coaching_Transcript.html"
+    # Find F1_*, F2_* etc.
+    $Fundamental = Get-ChildItem $Package.FullName -Directory |
+        Where-Object { $_.Name -match "^F\d+_" }
 
-    if (!(Test-Path $Readme)) {
-        Write-Host "$($Session.Name) is missing README.md"
+    if ($null -eq $Fundamental)
+    {
+        Write-Host "No Fundamental folder found."
         continue
     }
 
-    if (!(Test-Path $Transcript)) {
-        Write-Host "$($Session.Name) is missing Coaching_Transcript.html"
-        continue
+    Write-Host ""
+    Write-Host "Fundamental:"
+    Write-Host $Fundamental.Name
+
+    $Destination = Join-Path $Fundamentals $Fundamental.Name
+
+    if (!(Test-Path $Destination))
+    {
+        New-Item -ItemType Directory -Force -Path $Destination | Out-Null
     }
 
-    $Target = Join-Path $Destination $Session.Name
+    #
+    # Copy Sessions
+    #
 
-    if (Test-Path $Target) {
-        Write-Host "$($Session.Name) already exists. Skipping."
-        continue
+    $SourceSessions = Join-Path $Fundamental.FullName "Sessions"
+
+    if (Test-Path $SourceSessions)
+    {
+        Write-Host ""
+        Write-Host "Publishing Sessions..."
+
+        Copy-Item `
+            "$SourceSessions\*" `
+            (Join-Path $Destination "Sessions") `
+            -Recurse `
+            -Force
+
+        Write-Host "Sessions updated."
     }
 
-    Copy-Item $Session.FullName -Destination $Destination -Recurse
-    Write-Host "Copied $($Session.Name)"
+    #
+    # Copy Chapters
+    #
+
+    $SourceChapters = Join-Path $Fundamental.FullName "Chapters"
+
+    if (Test-Path $SourceChapters)
+    {
+        Write-Host ""
+        Write-Host "Publishing Chapters..."
+
+        Copy-Item `
+            "$SourceChapters\*" `
+            (Join-Path $Destination "Chapters") `
+            -Recurse `
+            -Force
+
+        Write-Host "Chapters updated."
+    }
 }
+
+#
+# Git
+#
 
 Set-Location $RepoRoot
 
-if (-not (git status --porcelain)) {
+git add .
+
+if (-not (git status --porcelain))
+{
+    Write-Host ""
     Write-Host "Nothing to commit."
     exit 0
 }
 
 $CommitMessage = Read-Host "Commit message"
 
-git add .
 git commit -m "$CommitMessage"
+
 git push
 
-$Delete = Read-Host "Delete processed folders from incoming? (Y/N)"
+#
+# Cleanup
+#
 
-if ($Delete -match '^[Yy]$') {
-    foreach ($Session in $Sessions) {
-        if (Test-Path $Session.FullName) {
-            Remove-Item $Session.FullName -Recurse -Force
-        }
+$Delete = Read-Host "Delete processed packages from incoming? (Y/N)"
+
+if ($Delete -match '^[Yy]$')
+{
+    foreach ($Package in $Packages)
+    {
+        Remove-Item $Package.FullName -Recurse -Force
     }
+
+    Write-Host ""
     Write-Host "Incoming cleaned."
 }
 
-Write-Host "Done."
+Write-Host ""
+Write-Host "======================================="
+Write-Host "Publish completed successfully."
+Write-Host "======================================="
