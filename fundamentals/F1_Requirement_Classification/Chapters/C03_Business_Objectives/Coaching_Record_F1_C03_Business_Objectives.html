@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Coaching Record - F1 C03 Business Objectives</title>
+<style>
+body{font-family:Arial;line-height:1.7;max-width:1000px;margin:auto}
+h1{color:#0b5394}
+h2{color:#38761d;border-bottom:1px solid #ddd}
+.question{background:#eef6ff;padding:10px;border-left:5px solid #4a86e8}
+.answer{background:#f7fff2;padding:10px;border-left:5px solid #6aa84f}
+.diagnosis{background:#fff8dc;padding:10px;border-left:5px solid orange}
+.refinement{background:#f4f4f4;padding:10px;border-left:5px solid gray}
+.principle{background:#f5ecff;padding:10px;border-left:5px solid purple}
+.newsletter{background:#fef3c7;padding:10px;border-left:5px solid #b8860b}
+</style>
+</head>
+<body>
+
+<h1>Fundamental 1 – Chapter 3 – Business Objectives<br>Coaching Record</h1>
+
+<h2>Conversation 1 – Business Objective vs Solution</h2>
+<div class="question"><b>Coach</b><br>
+Product Manager says: "We need to build a notification service."<br><br>
+Would you accept this as the Business Objective?
+</div>
+
+<div class="answer"><b>Student</b><br>
+The sentence is missing crucial information.
+<ol>
+<li>We do not know whether it is an internal request or a new business request.</li>
+<li>It does not provide sufficient context or constraints.</li>
+</ol>
+</div>
+
+<div class="diagnosis"><b>Diagnosis</b><br>
+Good observation regarding lack of context. However, the reasoning still accepted "Notification Service" as the starting point. The deeper architect question is whether it is the business objective or already a proposed solution.
+</div>
+
+<div class="refinement"><b>Architect Refinement</b><br>
+An architect should identify whether the stakeholder is describing:
+<ul>
+<li>Business Problem</li>
+<li>Business Objective</li>
+<li>Proposed Solution</li>
+</ul>
+A notification service is one possible solution.
+</div>
+
+<div class="principle"><b>Architecture Principle</b><br>
+Architects validate the problem before validating the solution.
+</div>
+
+<div class="newsletter"><b>Newsletter Opportunity</b><br>
+The Product Manager Already Gave You a Solution.
+</div>
+
+<hr>
+
+<h2>Conversation 2 – Business Objective Discovery</h2>
+
+<div class="question"><b>Coach</b><br>
+Users are complaining that they don't know when their order has been shipped.<br>
+What is the Business Objective?
+</div>
+
+<div class="answer"><b>Student</b><br>
+The business objective is to give timely shipment updates.
+</div>
+
+<div class="diagnosis"><b>Diagnosis</b><br>
+Good transition away from technology, but still close to the solution. Continue asking "Why?" until reaching the business outcome.
+</div>
+
+<div class="refinement"><b>Architect Refinement</b><br>
+Improve customer experience → Reduce uncertainty → Increase trust → Improve retention.
+Shipment updates are one possible implementation.
+</div>
+
+<div class="principle"><b>Architecture Principle</b><br>
+Business objectives describe outcomes. Solutions implement outcomes.
+</div>
+
+<hr>
+
+<h2>Conversation 3 – Business Objective vs Metric</h2>
+
+<div class="question"><b>Coach</b><br>
+PM A: Increase user engagement.<br>
+PM B: Increase session duration by 20%.<br>
+Which is the better business objective?
+</div>
+
+<div class="answer"><b>Student</b><br>
+PM B is more measurable. My next question would be: What business value does increasing session duration provide?
+</div>
+
+<div class="diagnosis"><b>Diagnosis</b><br>
+Excellent reasoning. You moved naturally from metric to business value.
+</div>
+
+<div class="refinement"><b>Architect Refinement</b><br>
+Business Objective → Success Metric → Target.<br>
+Metrics measure objectives; they are not objectives.
+</div>
+
+<div class="principle"><b>Architecture Principle</b><br>
+Architects optimize objectives. Metrics indicate progress.
+</div>
+
+<hr>
+
+<h2>Conversation 4 – Conflicting Business Objectives</h2>
+
+<div class="question"><b>Coach</b><br>
+CEO: Increase customer satisfaction.<br>
+CFO: Reduce infrastructure cost.<br>
+Product: Launch three premium features.
+</div>
+
+<div class="answer"><b>Student</b><br>
+The objectives have dependencies and conflicts. We should prioritize based on business value, budget, dependencies and conflicts.
+</div>
+
+<div class="diagnosis"><b>Diagnosis</b><br>
+Excellent identification of conflicts. The next level is to optimize multiple objectives before sacrificing one.
+</div>
+
+<div class="refinement"><b>Architect Refinement</b><br>
+Architects optimize overall business value rather than individual objectives.
+</div>
+
+<div class="principle"><b>Architecture Principle</b><br>
+Trade-offs should be the last option, not the first.
+</div>
+
+<hr>
+
+<h2>Learning Capture</h2>
+<ul>
+<li>Shifted from feature thinking to business value thinking.</li>
+<li>Began asking "What business value?" instead of "What feature?".</li>
+<li>Distinguished Business Objective, Solution, Metric and Business Value.</li>
+<li>Reasoned through dependencies, constraints and trade-offs.</li>
+</ul>
+
+</body>
+</html>
