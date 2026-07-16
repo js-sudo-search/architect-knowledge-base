@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Analysis - F1 C04 Functional Requirements</title>
+<style>
+body{font-family:Arial;line-height:1.7;max-width:1000px;margin:auto}
+h1{color:#0b5394}
+h2{color:#38761d;border-bottom:1px solid #ddd}
+pre{background:#f7f7f7;padding:10px}
+table{border-collapse:collapse;width:100%}
+th,td{border:1px solid #ccc;padding:8px}
+th{background:#f2f2f2}
+</style>
+</head>
+<body>
+
+<h1>Fundamental 1 – Chapter 4 – Functional Requirements</h1>
+
+<h2>Concept</h2>
+<p>
+Functional Requirements describe <b>what capabilities</b> the system must provide
+to achieve the Business Objective. They bridge the gap between
+business intent and technical design without prescribing implementation.
+</p>
+
+<h2>Mental Model</h2>
+
+<pre>
+Business Objective
+        │
+        ▼
+Functional Requirements
+        │
+        ▼
+Prioritized Functional Requirements
+        │
+        ▼
+Non-Functional Requirements
+        │
+        ▼
+Scale Estimation
+        │
+        ▼
+Architecture
+</pre>
+
+<h2>Key Insights</h2>
+<ul>
+<li>Business Objectives answer <b>Why</b>.</li>
+<li>Functional Requirements answer <b>What capabilities</b>.</li>
+<li>Non-Functional Requirements answer <b>How well</b>.</li>
+<li>Architecture answers <b>How</b>.</li>
+</ul>
+
+<h2>Capability vs Implementation</h2>
+
+<table>
+<tr>
+<th>Functional Requirement</th>
+<th>Implementation</th>
+</tr>
+
+<tr>
+<td>The system shall notify users about order status changes.</td>
+<td>Email, SMS, Push Notification, WhatsApp, etc.</td>
+</tr>
+
+<tr>
+<td>The system shall allow users to upgrade their subscription.</td>
+<td>Mobile App, Website, API, etc.</td>
+</tr>
+</table>
+
+<h2>Functional Requirement vs UI Specification</h2>
+
+<table>
+<tr>
+<th>Statement</th>
+<th>Classification</th>
+</tr>
+
+<tr>
+<td>The system shall allow users to upgrade their subscription.</td>
+<td>Functional Requirement</td>
+</tr>
+
+<tr>
+<td>The Upgrade button should be blue.</td>
+<td>UI / UX Specification</td>
+</tr>
+
+<tr>
+<td>The password reset email should have a friendly tone.</td>
+<td>Content / Design Specification</td>
+</tr>
+
+</table>
+
+<h2>Prioritization Framework</h2>
+
+<ol>
+<li>Business Continuity</li>
+<li>Core Business Capability</li>
+<li>Business Value</li>
+<li>Dependencies</li>
+<li>User Impact</li>
+</ol>
+
+<h2>Common Mistakes</h2>
+
+<ul>
+<li>Confusing capabilities with implementation choices.</li>
+<li>Confusing UI specifications with Functional Requirements.</li>
+<li>Listing requirements without understanding the Business Objective.</li>
+<li>Prioritizing based on opinion instead of explicit criteria.</li>
+</ul>
+
+<h2>Interview Guidance</h2>
+
+<p>
+When gathering Functional Requirements, avoid asking
+"Should we use Email or SMS?"
+Instead ask:
+</p>
+
+<ul>
+<li>What capability should the system provide?</li>
+<li>Who needs this capability?</li>
+<li>Why is it valuable to the business?</li>
+<li>Is this capability essential for the first release?</li>
+</ul>
+
+<h2>Cheat Sheet</h2>
+
+<pre>
+Business Objective
+        ↓
+Identify Capabilities
+        ↓
+Prioritize Capabilities
+        ↓
+Derive Non-Functional Requirements
+        ↓
+Design Architecture
+</pre>
+
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Coaching Record - F1 C04 Functional Requirements</title>
+<style>
+body{font-family:Arial;line-height:1.7;max-width:1000px;margin:auto}
+h1{color:#0b5394}h2{color:#38761d;border-bottom:1px solid #ddd}
+.question{background:#eef6ff;padding:10px;border-left:5px solid #4a86e8;margin-top:12px}
+.answer{background:#f7fff2;padding:10px;border-left:5px solid #6aa84f}
+.diagnosis{background:#fff8dc;padding:10px;border-left:5px solid orange}
+.refinement{background:#f4f4f4;padding:10px;border-left:5px solid gray}
+.principle{background:#f5ecff;padding:10px;border-left:5px solid purple}
+.newsletter{background:#fef3c7;padding:10px;border-left:5px solid #b8860b}
+pre{background:#f7f7f7;padding:10px}
+</style></head><body>
+<h1>Fundamental 1 – Chapter 4 – Functional Requirements</h1>
+<p><b>Coaching Record</b></p>
+
+<h2>Conversation 1 – Why do Functional Requirements exist?</h2>
+<div class="question"><b>Coach</b><br>Why do we need Functional Requirements? What information is still missing after defining the Business Objective?</div>
+<div class="answer"><b>Student</b><br>Functional Requirements define the capabilities required by the system. Non-Functional Requirements depend on them.</div>
+<div class="diagnosis"><b>Diagnosis</b><br>The dependency was identified correctly, but the unique responsibility of Functional Requirements needed refinement.</div>
+<div class="refinement"><b>Architect Refinement</b><br>Business Objectives answer <b>Why</b>. Functional Requirements answer <b>What capabilities</b>. Non-Functional Requirements answer <b>How well</b>.<pre>Business Objective → Why?
+Functional Requirement → What?
+Non-Functional Requirement → How well?
+Scale Estimation → How much?
+Architecture → How?</pre></div>
+<div class="principle"><b>Architecture Principle</b><br>Every layer contributes new information before architecture decisions are made.</div>
+
+<hr>
+
+<h2>Conversation 2 – Capability vs Implementation</h2>
+<div class="question"><b>Coach</b><br>How would you discover Functional Requirements for keeping customers informed about their orders?</div>
+<div class="answer"><b>Student</b><br>Initially proposed Email, SMS, live tracking and order history.</div>
+<div class="diagnosis"><b>Diagnosis</b><br>The reasoning jumped to implementation before identifying capabilities.</div>
+<div class="refinement"><b>Architect Refinement</b><br>First identify capabilities (track order, receive status updates, view order history). Only afterwards discuss implementation choices such as Email, SMS or Push Notifications.</div>
+<div class="principle"><b>Architecture Principle</b><br>Capabilities are defined before implementation choices.</div>
+<div class="newsletter"><b>Newsletter Opportunity</b><br>Don't Ask “Email or SMS?” Until You Know the Capability.</div>
+
+<hr>
+
+<h2>Conversation 3 – Functional Requirement vs UI Specification</h2>
+<div class="question"><b>Coach</b><br>Which is the Functional Requirement?<ol><li>The system shall allow users to upgrade their subscription.</li><li>The Upgrade button should be blue.</li></ol></div>
+<div class="answer"><b>Student</b><br>Initially classified the button specification as a Functional Requirement because it impacts user experience. After discussion, distinguished capability from UI design.</div>
+<div class="diagnosis"><b>Diagnosis</b><br>Classification gap between capability and presentation.</div>
+<div class="refinement"><b>Architect Refinement</b><br>Functional Requirements describe system capabilities. UI specifications describe presentation.</div>
+<div class="principle"><b>Architecture Principle</b><br>A capability remains valid even if the presentation changes.</div>
+
+<hr>
+
+<h2>Conversation 4 – Prioritizing Functional Requirements</h2>
+<div class="question"><b>Coach</b><br>How should Functional Requirements be prioritized?</div>
+<div class="answer"><b>Student</b><br>Prioritized Login, Reset Password and Dashboard before Export PDF, Multi-language and Dark Mode based on business continuity and business value.</div>
+<div class="diagnosis"><b>Diagnosis</b><br>The prioritization was sound, but the criteria should be explained before the ordering.</div>
+<div class="refinement"><b>Architect Refinement</b><br>Prioritize using: Business Continuity → Core Business Capability → Business Value → Dependencies → User Impact.</div>
+<div class="principle"><b>Architecture Principle</b><br>Architects justify priorities using explicit criteria rather than opinions.</div>
+<div class="newsletter"><b>Newsletter Opportunity</b><br>Why Not Every Functional Requirement Deserves Equal Priority.</div>
+
+<hr>
+
+<h2>Learning Capture</h2>
+<ul>
+<li>Shifted from feature thinking to capability thinking.</li>
+<li>Separated capabilities from implementation choices.</li>
+<li>Distinguished Functional Requirements from UI specifications.</li>
+<li>Learned that Functional Requirements must be prioritized before deriving Non-Functional Requirements.</li>
+</ul>
+
+</body></html>

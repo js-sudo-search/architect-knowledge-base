@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Session 002 - Coaching Transcript</title>
+<style>
+body{font-family:Arial;max-width:1050px;margin:auto;line-height:1.7}
+h1{color:#0b5394}
+h2{color:#38761d;border-bottom:1px solid #ddd}
+.coach{background:#eef6ff;padding:10px;border-left:5px solid #4a86e8;margin-top:12px}
+.student{background:#f5fff0;padding:10px;border-left:5px solid #6aa84f}
+.diagnosis{background:#fff8dc;padding:10px;border-left:5px solid orange}
+.refinement{background:#f4f4f4;padding:10px;border-left:5px solid gray}
+</style>
+</head>
+<body>
+
+<h1>Session 002 – Coaching Transcript</h1>
+
+<p><b>Fundamental:</b> F1 – Requirement Classification</p>
+<p><b>Chapter:</b> C04 – Functional Requirements</p>
+
+<h2>Dialogue 1</h2>
+
+<div class="coach">
+<b>Coach</b><br>
+Business Objective:
+"Improve customer experience by keeping customers informed throughout the order lifecycle."
+<br><br>
+Why do Functional Requirements exist? What information is still missing before architecture?
+</div>
+
+<div class="student">
+<b>Student</b><br>
+Functional Requirements help understand the user's needs. They define the capability required by the system and Non-Functional Requirements depend on them.
+</div>
+
+<div class="diagnosis">
+<b>Coach's Diagnosis</b><br>
+Correct dependency identified, but the unique purpose of Functional Requirements was still unclear.
+</div>
+
+<div class="refinement">
+<b>Architect Refinement</b><br>
+Business Objectives answer <b>Why</b>.<br>
+Functional Requirements answer <b>What capabilities</b>.<br>
+Non-Functional Requirements answer <b>How well</b>.
+</div>
+
+<h2>Dialogue 2</h2>
+
+<div class="coach">
+<b>Coach</b><br>
+How would you discover the Functional Requirements?
+</div>
+
+<div class="student">
+<b>Student</b><br>
+Should users receive Email or SMS updates?<br>
+Do they want live tracking?<br>
+Do they want order history?
+</div>
+
+<div class="diagnosis">
+<b>Coach's Diagnosis</b><br>
+The reasoning jumped directly to implementation choices. Email and SMS are technologies, not Functional Requirements.
+</div>
+
+<div class="refinement">
+<b>Architect Refinement</b><br>
+First discover capabilities:
+<ul>
+<li>Should users know the current order status?</li>
+<li>Should users be notified when the status changes?</li>
+<li>Should users view order history?</li>
+</ul>
+Implementation comes afterwards.
+</div>
+
+<h2>Dialogue 3</h2>
+
+<div class="coach">
+<b>Coach</b><br>
+Business Objective:
+Improve subscription management.
+List Functional Requirements.
+</div>
+
+<div class="student">
+<b>Student</b><br>
+Allow users to cancel subscriptions.<br>
+Show subscription history.<br>
+Allow users to subscribe again.<br>
+Allow users to upgrade subscriptions.
+</div>
+
+<div class="diagnosis">
+<b>Coach's Diagnosis</b><br>
+Good capability thinking. One observation was distinguishing capabilities from business rules.
+</div>
+
+<div class="refinement">
+<b>Architect Refinement</b><br>
+Phrase Functional Requirements from the system's perspective:
+"The system shall allow users to upgrade subscriptions."
+</div>
+
+<h2>Dialogue 4</h2>
+
+<div class="coach">
+<b>Coach</b><br>
+Which statement is a Functional Requirement?
+<ol>
+<li>The system shall allow users to upgrade subscriptions.</li>
+<li>The Upgrade button should be blue.</li>
+</ol>
+</div>
+
+<div class="student">
+<b>Student</b><br>
+Initially identified the button specification as a Functional Requirement because it affects user experience.
+</div>
+
+<div class="diagnosis">
+<b>Coach's Diagnosis</b><br>
+Classification gap. UI specifications are not Functional Requirements.
+</div>
+
+<div class="refinement">
+<b>Architect Refinement</b><br>
+Capabilities survive UI redesigns; UI specifications do not.
+</div>
+
+<h2>Dialogue 5</h2>
+
+<div class="coach">
+<b>Coach</b><br>
+How would you prioritize Functional Requirements for a two-month release?
+</div>
+
+<div class="student">
+<b>Student</b><br>
+Prioritized Login, Reset Password and Dashboard before Export PDF, Multi-language and Dark Mode based on business continuity and business value.
+</div>
+
+<div class="diagnosis">
+<b>Coach's Diagnosis</b><br>
+Good prioritization, but explain the prioritization criteria before presenting the ordering.
+</div>
+
+<div class="refinement">
+<b>Architect Refinement</b><br>
+Use explicit criteria:
+<ul>
+<li>Business Continuity</li>
+<li>Core Business Capability</li>
+<li>Business Value</li>
+<li>Dependencies</li>
+<li>User Impact</li>
+</ul>
+</div>
+
+<h2>Session Closing</h2>
+
+<p>
+The major evolution during this session was the transition from
+<b>feature thinking</b> to <b>capability thinking</b>.
+By the end of the chapter, Functional Requirements were consistently treated as
+system capabilities derived from Business Objectives rather than implementations or UI specifications.
+</p>
+
+</body>
+</html>
