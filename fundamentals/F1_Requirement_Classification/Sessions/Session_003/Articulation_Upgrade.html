@@ -1,0 +1,226 @@
+
+<html>
+<head>
+<title>Articulation Upgrade - C05</title>
+<style>
+body{font-family:Arial;max-width:1100px;margin:auto;line-height:1.7}
+h1,h2{color:#1f4e79}
+.section{border:1px solid #ccc;padding:16px;margin:20px 0;border-radius:8px}
+.quote{background:#f5f5f5;padding:10px;border-left:4px solid #1f4e79}
+table{border-collapse:collapse;width:100%}
+th,td{border:1px solid #bbb;padding:8px;vertical-align:top}
+th{background:#eee}
+</style>
+</head>
+<body>
+
+<h1>Articulation Upgrade – Chapter C05: Non-Functional Requirements</h1>
+
+<p><b>Purpose</b><br>
+Capture how interview answers evolved from technically correct responses into architect-level communication.
+The focus is not only on correctness, but on how to present reasoning in a structured and professional manner.</p>
+
+<div class="section">
+<h2>Problem 1 – Conflicting Non-Functional Requirements</h2>
+
+<h3>Interview Problem</h3>
+<div class="quote">
+A Product Manager asks for:
+<ul>
+<li>99.999% availability</li>
+<li>&lt;100 ms latency</li>
+<li>Zero data loss</li>
+<li>Lowest infrastructure cost</li>
+</ul>
+How would you respond?
+</div>
+
+<h3>Your Original Answer (Mic)</h3>
+<div class="quote">
+Availability increases cost. We need to clarify what zero data loss means.
+Latency also depends on network bandwidth, so 100 ms may not always be achievable.
+</div>
+
+<h3>Communication Diagnosis</h3>
+<ul>
+<li><b>Strengths</b>
+<ul>
+<li>Recognized trade-offs instead of accepting requirements blindly.</li>
+<li>Asked for clarification.</li>
+</ul></li>
+
+<li><b>Improve</b>
+<ul>
+<li>Mixed backend latency with end-to-end latency.</li>
+<li>Could start from business objectives instead of technical limitations.</li>
+</ul></li>
+</ul>
+
+<h3>Architect Articulation Upgrade</h3>
+<div class="quote">
+Before discussing architecture, I'd like to understand the business priorities behind these requirements.
+Some quality attributes naturally compete with one another—for example, achieving extremely high availability generally increases infrastructure cost, while guaranteeing zero data loss may introduce additional latency.
+Once the business priorities are clear, we can evaluate architectural options that provide the right balance.
+</div>
+
+<h3>Why This Sounds Better</h3>
+<ul>
+<li>Begins with business priorities.</li>
+<li>Explains trade-offs instead of listing them.</li>
+<li>Uses architect vocabulary.</li>
+</ul>
+
+<h3>Interview Takeaway</h3>
+<p>Never accept or reject NFRs immediately. Validate business priorities first.</p>
+
+<h3>Vocabulary Added</h3>
+<ul>
+<li>Business priorities</li>
+<li>Quality attributes</li>
+<li>Architectural options</li>
+<li>Trade-offs</li>
+</ul>
+</div>
+
+
+<div class="section">
+<h2>Problem 2 – Slow Food Delivery API</h2>
+
+<h3>Interview Problem</h3>
+<div class="quote">
+The ordering API takes three seconds. Your Engineering Manager immediately proposes adding Redis.
+</div>
+
+<h3>Your Original Answer (Mic)</h3>
+<div class="quote">
+I'd first ask why 500 ms is the target, whether it's benchmarked, and whether the issue occurs in all regions.
+</div>
+
+<h3>Communication Diagnosis</h3>
+<ul>
+<li><b>Strengths</b>
+<ul>
+<li>Excellent assumption validation.</li>
+<li>Did not jump directly to technology.</li>
+</ul></li>
+
+<li><b>Improve</b>
+<ul>
+<li>One key question was missing: Where is the latency actually measured?</li>
+</ul></li>
+</ul>
+
+<h3>Architect Articulation Upgrade</h3>
+<div class="quote">
+Before deciding whether Redis is appropriate, I'd like to understand where the latency is occurring.
+Is the delay in the client, network, backend, database, or an external dependency?
+Once we've localized the bottleneck, we can determine whether caching is the correct optimization strategy.
+</div>
+
+<h3>Why This Sounds Better</h3>
+<ul>
+<li>Shows structured reasoning.</li>
+<li>Demonstrates evidence-based decision making.</li>
+<li>Avoids assuming the solution.</li>
+</ul>
+
+<h3>Interview Takeaway</h3>
+<p>Localize the bottleneck before proposing an optimization.</p>
+
+<h3>Vocabulary Added</h3>
+<ul>
+<li>Localize the bottleneck</li>
+<li>External dependency</li>
+<li>Optimization strategy</li>
+<li>Evidence-based decision</li>
+</ul>
+</div>
+
+
+<div class="section">
+<h2>Problem 3 – Photo Upload vs Money Transfer</h2>
+
+<h3>Interview Problem</h3>
+<div class="quote">
+Why shouldn't these two APIs use the same architecture?
+</div>
+
+<h3>Your Original Answer (Mic)</h3>
+<div class="quote">
+Payments are business critical and affect customer trust.
+Photo uploads can be retried and temporary failures are acceptable.
+Different Functional Requirements have different Non-Functional Requirements.
+</div>
+
+<h3>Communication Diagnosis</h3>
+<ul>
+<li><b>Strengths</b>
+<ul>
+<li>Excellent business-first reasoning.</li>
+<li>Connected business impact with architecture.</li>
+</ul></li>
+
+<li><b>Improve</b>
+<ul>
+<li>State that each Functional Requirement has its own <b>set</b> of NFRs.</li>
+</ul></li>
+</ul>
+
+<h3>Architect Articulation Upgrade</h3>
+<div class="quote">
+Although both are APIs, their business expectations are fundamentally different.
+A failed profile-picture upload is usually recoverable with minimal business impact.
+A failed payment directly affects customer trust, financial correctness, and compliance.
+Because each Functional Requirement has its own set of Non-Functional Requirements, the resulting architectures are also different.
+</div>
+
+<h3>Why This Sounds Better</h3>
+<ul>
+<li>Connects business impact to technical decisions.</li>
+<li>Explains the reasoning instead of giving a conclusion.</li>
+</ul>
+
+<h3>Interview Takeaway</h3>
+<p>Architecture follows business expectations—not functionality alone.</p>
+
+<h3>Vocabulary Added</h3>
+<ul>
+<li>Business impact</li>
+<li>Financial correctness</li>
+<li>Compliance</li>
+<li>Business expectations</li>
+</ul>
+</div>
+
+<h2>Overall Communication Progress</h2>
+
+<table>
+<tr>
+<th>Earlier Style</th>
+<th>Architect Style</th>
+</tr>
+
+<tr>
+<td>Let's optimize.</td>
+<td>I'd first localize the bottleneck before evaluating optimization strategies.</td>
+</tr>
+
+<tr>
+<td>Need some time.</td>
+<td>Let me reason through this systematically.</td>
+</tr>
+
+<tr>
+<td>Let's understand.</td>
+<td>I'd like to validate the assumptions before discussing architectural options.</td>
+</tr>
+</table>
+
+<h2>Chapter Milestone</h2>
+
+<div class="quote">
+This chapter marked a shift from giving technically correct answers to presenting structured architectural reasoning suitable for Solution Architect interviews.
+</div>
+
+</body>
+</html>

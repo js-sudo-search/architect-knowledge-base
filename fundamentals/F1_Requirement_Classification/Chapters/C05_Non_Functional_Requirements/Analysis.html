@@ -1,0 +1,90 @@
+
+<html><head><title>C05 Analysis</title></head>
+<body style="font-family:Arial;max-width:1000px;margin:auto;line-height:1.6">
+<h1>C05 - Non-Functional Requirements</h1>
+<h2>Chapter Objective</h2>
+<p>Understand why Non-Functional Requirements (NFRs) exist, how they are derived from business objectives, and why they drive architectural decisions.</p>
+
+<h2>1. Functional vs Non-Functional Requirements</h2>
+<p>Functional Requirements define <b>what</b> the system should do. NFRs define <b>how well</b> it should perform that capability.</p>
+
+<h2>Mental Model</h2>
+<pre>
+Business Objective
+      ↓
+Functional Requirement
+      ↓
+Non-Functional Requirement
+      ↓
+Architecture
+</pre>
+
+<h2>2. NFR Categories</h2>
+<ul>
+<li>Availability</li>
+<li>Latency</li>
+<li>Reliability</li>
+<li>Durability</li>
+<li>Security</li>
+<li>Scalability</li>
+<li>Observability</li>
+<li>Maintainability</li>
+</ul>
+
+<h2>3. NFRs are Derived, not Selected</h2>
+<p>Rather than memorizing a checklist, architects ask questions such as:</p>
+<ul>
+<li>How fast?</li>
+<li>How available?</li>
+<li>Can data be lost?</li>
+<li>What happens during failure?</li>
+<li>Who can access it?</li>
+</ul>
+
+<h2>4. Different Functional Requirements → Different NFRs</h2>
+<table border="1" cellpadding="6">
+<tr><th>Photo Upload</th><th>Money Transfer</th></tr>
+<tr><td>Retry acceptable</td><td>Retry may duplicate payment</td></tr>
+<tr><td>Moderate latency acceptable</td><td>Low latency expected</td></tr>
+<tr><td>Lower business impact</td><td>High trust & compliance impact</td></tr>
+<tr><td>Simple architecture</td><td>Highly reliable architecture</td></tr>
+</table>
+
+<h2>5. Trade-offs</h2>
+<ul>
+<li>Higher availability generally increases cost.</li>
+<li>Higher durability may increase latency.</li>
+<li>Higher consistency may reduce availability.</li>
+<li>Greater reliability increases operational complexity.</li>
+</ul>
+
+<h2>6. Evidence Before Architecture</h2>
+<p>Case study: A proposal to add Redis was challenged until latency was profiled.</p>
+<pre>
+Client + Network : 2.2 s
+Backend          : 0.5 s
+Payment          : 0.2 s
+Database         : 0.1 s
+</pre>
+<p>Conclusion: Localize the bottleneck before optimizing.</p>
+
+<h2>Architect Thinking Process</h2>
+<pre>
+Understand Business Objective
+        ↓
+Clarify Assumptions
+        ↓
+Translate to Technical Problem
+        ↓
+Gather Evidence
+        ↓
+Evaluate Trade-offs
+        ↓
+Design Architecture
+</pre>
+
+<h2>Distilled Principle</h2>
+<blockquote>
+Architecture follows business expectations. Business expectations become Non-Functional Requirements, and NFRs drive architectural decisions.
+</blockquote>
+</body></html>
