@@ -1,4 +1,60 @@
-<html><body><h1>Articulation Upgrade</h1>
-<h2>Geography</h2><p>Global deployment primarily affects latency, which drives regional deployments and routing. Multi-region also improves resilience.</p>
-<h2>Scale Estimation</h2><p>Estimate QPS, storage growth, throughput and peak load before proposing architecture because each metric justifies a design decision.</p>
+<html><head><meta charset="utf-8">
+<style>
+body{font-family:Arial;max-width:1100px;margin:40px auto;line-height:1.7}
+h1{color:#1f4e79}h2{background:#eef4fb;padding:8px}
+.box{border-left:4px solid #1f4e79;background:#f8f9fb;padding:12px;margin:10px 0;white-space:pre-wrap}
+</style></head><body>
+<h1>Session 004 – Articulation Upgrade (Detailed)</h1>
+
+<h2>Problem 1</h2>
+<b>1. Interview Problem</b>
+<div class="box">Why does it matter architecturally whether the URL Shortener is global or regional?</div>
+<b>2. Your Original Answer</b>
+<div class="box">If the geographical locations are distributed, it impacts the architectural decision because then we have to think about the number of servers that can support the availability, the redundancy, durability. So these are the things that will impact the architectural designs.</div>
+<b>3. Gaps</b>
+<div class="box">• Correct intuition.
+• Jumped directly to server count.
+• Missing causal chain:
+Geography → Longer distance → Higher latency → Regional deployment → Traffic routing.
+• Explained outcomes before explaining why.</div>
+<b>4. Refined Architect Answer</b>
+<div class="box">If the service is globally distributed, the first architectural consequence is increased network latency because requests travel longer distances. To reduce latency, services are deployed closer to users and traffic is routed to the nearest healthy region. Multi-region deployment also improves resilience through regional failover.</div>
+
+<h2>Problem 2</h2>
+<b>1. Interview Problem</b>
+<div class="box">The service has 500 million monthly active users. Would you start designing immediately or perform scale estimation first? Why?</div>
+<b>2. Your Original Answer</b>
+<div class="box">This is a global URL shortener with 500 million active users. Some users are nearer to servers while others are farther away, so latency changes. Users become active at different times across regions. If one region fails, traffic should be routed to nearby servers. Therefore resilience and high availability become important.</div>
+<b>3. Gaps</b>
+<div class="box">• Stayed in NFR discussion.
+• Didn't answer why estimation precedes architecture.
+• Missing idea: estimation provides evidence such as QPS, storage and throughput before design.</div>
+<b>4. Refined Architect Answer</b>
+<div class="box">Before proposing an architecture, I would estimate workload characteristics such as read/write QPS, storage growth and throughput. Those estimates determine whether a simple architecture is sufficient or whether distributed components are required. Without them, architecture would be based on assumptions instead of evidence.</div>
+
+<h2>Problem 3</h2>
+<b>1. Interview Problem</b>
+<div class="box">If you could estimate only four things before starting the architecture, which four would you choose, and why?</div>
+<b>2. Your Original Answer</b>
+<div class="box">The four most influential metrics that would help me do a scale estimation...
+First, per geographical location, what is the number of active users?
+What is the peak traffic?
+What is the size of each request?
+That will give me an idea about storage.
+The first one will give me an idea about query per second.
+The fourth would be network limitations. I need bandwidth so that I can understand throughput. Based on throughput I can decide the number of backend servers. The fourth would be the sensitivity of the functionality. Do we need this functionality to be highly available?</div>
+<b>3. Gaps</b>
+<div class="box">• Mixed inputs (active users, request size) with derived metrics (QPS, storage, throughput).
+• Availability is an NFR, not a scale metric.
+• Did not state which architectural decision each metric enables.</div>
+<b>4. Refined Architect Answer</b>
+<div class="box">I would estimate:
+1. Read/Write QPS — to determine horizontal scaling.
+2. Storage growth — for capacity planning.
+3. Throughput/Bandwidth requirements — for network sizing.
+4. Peak versus Average Load — for headroom and auto-scaling.
+Each metric directly justifies an architectural decision.</div>
+
+<h2>Interview Principle</h2>
+<div class="box">Requirement → Constraint → Evidence → Architectural Decision → Technology.</div>
 </body></html>
