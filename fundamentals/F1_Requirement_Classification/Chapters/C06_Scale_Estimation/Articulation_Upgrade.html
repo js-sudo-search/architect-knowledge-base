@@ -1,0 +1,33 @@
+<html><body>
+<h1>Articulation Upgrade – Chapter 6</h1>
+
+<h2>Problem 1</h2>
+<h3>Why does geographic scope matter?</h3>
+<p><b>Original:</b> Global deployment affects server count, availability and redundancy.</p>
+<p><b>Diagnosis:</b> Skipped the causal chain.</p>
+<p><b>Architect Version:</b> Geographic distribution primarily increases network latency. That motivates regional deployments and traffic routing. Multi-region deployments also improve resilience by enabling regional failover.</p>
+
+<hr>
+
+<h2>Problem 2</h2>
+<h3>Why perform scale estimation before architecture?</h3>
+<p><b>Diagnosis:</b> Focus drifted toward NFRs instead of evidence gathering.</p>
+<p><b>Architect Version:</b> I estimate workload characteristics such as QPS, storage growth and throughput before proposing an architecture because those estimates determine whether a simple or distributed design is appropriate.</p>
+
+<hr>
+
+<h2>Problem 3</h2>
+<h3>Which metrics would you estimate first?</h3>
+<p><b>Diagnosis:</b> Mixed inputs with derived metrics.</p>
+<p><b>Architect Version:</b> I would estimate read/write QPS, storage growth, throughput requirements and peak versus average load. Each directly informs a scaling, storage, networking or capacity-planning decision.</p>
+
+<h2>Vocabulary</h2>
+<ul>
+<li>Evidence-driven architecture</li>
+<li>Derived metrics</li>
+<li>Capacity planning</li>
+<li>Regional deployment</li>
+<li>Throughput</li>
+</ul>
+
+</body></html>

@@ -1,0 +1,34 @@
+<html><body>
+<h1>Chapter 6 – Analysis</h1>
+
+<h2>Why Scale Estimation Exists</h2>
+<p>Architects estimate scale before proposing an architecture because architectural decisions should be supported by evidence rather than assumptions.</p>
+
+<h2>Key Mental Models</h2>
+<ul>
+<li>Requirements → Scale Estimation → Architecture</li>
+<li>Architects estimate constraints, not numbers.</li>
+<li>Every estimated metric should answer an architectural question.</li>
+<li>Geographic distribution first affects latency; latency then influences deployment strategy.</li>
+</ul>
+
+<h2>Important Distinctions</h2>
+<ul>
+<li>Global users do not automatically imply more servers.</li>
+<li>Performance and resilience are separate reasons for multi-region deployments.</li>
+<li>Differentiate raw inputs (MAU, request size) from derived metrics (QPS, storage growth, throughput).</li>
+</ul>
+
+<h2>Architectural Questions Behind Metrics</h2>
+<table border="1" cellpadding="6">
+<tr><th>Metric</th><th>Decision Enabled</th></tr>
+<tr><td>Read/Write QPS</td><td>Horizontal scaling requirements</td></tr>
+<tr><td>Storage Growth</td><td>Capacity planning and partitioning</td></tr>
+<tr><td>Throughput/Bandwidth</td><td>Network sizing</td></tr>
+<tr><td>Peak vs Average Load</td><td>Headroom and scaling strategy</td></tr>
+</table>
+
+<h2>Distilled Principle</h2>
+<p><b>Estimate first. Design second.</b></p>
+
+</body></html>
