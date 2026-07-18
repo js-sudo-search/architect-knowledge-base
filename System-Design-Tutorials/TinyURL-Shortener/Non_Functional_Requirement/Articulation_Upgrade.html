@@ -1,0 +1,28 @@
+<html><body>
+<h1>Articulation Upgrade</h1>
+
+<h2>Interview Problem</h2>
+<p>Describe the Non-Functional Requirements for a globally distributed URL Shortener.</p>
+
+<h3>Your Original Answer</h3>
+<p>You discussed storage, latency, peak traffic, availability and durability.</p>
+
+<h3>Strengths</h3>
+<ul>
+<li>Recognized the need for low latency and availability.</li>
+<li>Connected durability to preserving URL mappings.</li>
+</ul>
+
+<h3>Gaps</h3>
+<ul>
+<li>Storage is an implementation concern, not an NFR.</li>
+<li>Peak traffic and bandwidth belong to capacity estimation.</li>
+<li>Availability should be framed around failures rather than traffic growth.</li>
+</ul>
+
+<h3>Refined Architect Answer</h3>
+<p>The key Non-Functional Requirements are: low latency for global redirects, high availability despite failures, scalability for future traffic growth, durability so URL mappings are never lost, and reliability so every short URL consistently resolves to the correct destination.</p>
+
+<h3>Why This Version Is Stronger</h3>
+<p>It describes quality expectations without prematurely discussing implementation.</p>
+</body></html>

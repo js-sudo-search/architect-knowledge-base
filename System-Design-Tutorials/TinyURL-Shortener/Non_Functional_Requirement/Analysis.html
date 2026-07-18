@@ -1,0 +1,31 @@
+<html><body>
+<h1>Analysis – Non-Functional Requirements</h1>
+
+<h2>Definition</h2>
+<p>Functional Requirements define what the system should do. Non-Functional Requirements define the quality attributes that describe how well it should perform those functions.</p>
+
+<h2>Quality Attributes for URL Shortener</h2>
+<table border='1' cellpadding='5'>
+<tr><th>NFR</th><th>Why it matters</th></tr>
+<tr><td>Low Latency</td><td>Users expect redirects to complete quickly regardless of location.</td></tr>
+<tr><td>High Availability</td><td>Links should continue working despite infrastructure failures.</td></tr>
+<tr><td>Scalability</td><td>The system should continue to perform as traffic grows.</td></tr>
+<tr><td>Durability</td><td>URL mappings should never be lost once created.</td></tr>
+<tr><td>Reliability</td><td>Users should consistently be redirected to the correct destination.</td></tr>
+</table>
+
+<h2>Common Mistakes</h2>
+<ul>
+<li>Mixing storage, databases, caches, or load balancers into NFRs.</li>
+<li>Confusing capacity planning (bandwidth, QPS, headroom) with quality attributes.</li>
+<li>Describing implementation instead of expectations.</li>
+</ul>
+
+<h2>Mental Model</h2>
+<pre>
+FR  : What should the system do?
+NFR : How well should it do it?
+Capacity : How much should it handle?
+Architecture : How will we build it?
+</pre>
+</body></html>
