@@ -1,0 +1,146 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fundamental 1 - Clarification Questions</title>
+<style>
+body{font-family:Segoe UI,Arial,sans-serif;background:#f4f7fb;color:#24324a;margin:0}
+.hero{background:linear-gradient(135deg,#1e3a8a,#4f46e5);color:white;padding:40px}
+.hero h1{margin:0;font-size:38px}
+.hero p{opacity:.9}
+.container{max-width:1100px;margin:auto;padding:24px}
+.card{background:white;border-radius:14px;padding:20px;margin:18px 0;box-shadow:0 8px 20px rgba(0,0,0,.08)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.callout{border-left:6px solid #4f46e5;background:#eef2ff;padding:14px;border-radius:8px}
+.warn{border-left-color:#ef4444;background:#fef2f2}
+.tip{border-left-color:#10b981;background:#ecfdf5}
+table{width:100%;border-collapse:collapse}
+th{background:#1e3a8a;color:white}
+th,td{padding:10px;border:1px solid #dbe4f0;text-align:left}
+pre{background:#0f172a;color:#dbeafe;padding:16px;border-radius:10px;overflow:auto}
+.chat{padding:12px;border-radius:10px;margin:10px 0}
+.coach{background:#eef2ff}
+.student{background:#fff7ed}
+.badge{display:inline-block;background:#dbeafe;color:#1e3a8a;padding:4px 10px;border-radius:999px;font-size:12px;font-weight:bold}
+ul{line-height:1.7}
+footer{text-align:center;padding:30px;color:#64748b}
+</style>
+</head>
+<body>
+<div class="hero">
+<span class="badge">Fundamental 1</span>
+<h1>Clarification Questions (CQ)</h1>
+<p>Architects don't start by designing. They start by removing ambiguity.</p>
+</div>
+
+<div class="container">
+
+<div class="card">
+<h2>What are Clarification Questions?</h2>
+<p>Clarification Questions are the questions an architect asks before identifying requirements. Their purpose is to understand the problem, eliminate ambiguity, and establish the correct scope before making design decisions.</p>
+<div class="callout">
+<strong>Architect Insight</strong><br>
+The quality of your architecture is bounded by the quality of your questions.
+</div>
+</div>
+
+<div class="card">
+<h2>Why do they come first?</h2>
+<pre>
+Problem Statement
+      │
+      ▼
+Clarification Questions
+      │
+      ▼
+Business Objective
+      │
+      ▼
+Functional Requirements
+      │
+      ▼
+Non-Functional Requirements
+      │
+      ▼
+Capacity & Scale Estimation
+      │
+      ▼
+Architecture
+</pre>
+<p>Every answer influences scope, scale, assumptions, and ultimately the architecture.</p>
+</div>
+
+<div class="grid">
+<div class="card">
+<h2>Coach → Student</h2>
+<div class="chat coach"><strong>Coach:</strong> Design WhatsApp.</div>
+<div class="chat student"><strong>Student:</strong> I'll start listing Functional Requirements.</div>
+<div class="chat coach"><strong>Coach:</strong> Are you sure you know what problem you're solving? Consumer or enterprise? Is media sharing required? End-to-end encryption? Scale?</div>
+</div>
+
+<div class="card">
+<h2>Articulation Upgrade</h2>
+<p><strong>Before:</strong> "We should ask some questions first."</p>
+<p><strong>After:</strong> "Before identifying functional requirements, an architect removes ambiguity through clarification questions. The answers define the scope, assumptions, and influence every architectural decision that follows."</p>
+</div>
+</div>
+
+<div class="card">
+<h2>Interview Q&A</h2>
+<table>
+<tr><th>Interviewer</th><th>Good CQ</th><th>Why it Matters</th></tr>
+<tr><td>Design Dropbox</td><td>Consumer or enterprise?</td><td>Changes sharing, auth, storage and compliance.</td></tr>
+<tr><td>Design TinyURL</td><td>Custom aliases? Login required?</td><td>Changes data model and APIs.</td></tr>
+<tr><td>Design YouTube</td><td>Uploads only or streaming too?</td><td>Determines architecture scope.</td></tr>
+</table>
+</div>
+
+<div class="grid">
+<div class="card">
+<h2>Common Mistakes</h2>
+<div class="callout warn">
+<ul>
+<li>Jumping directly to architecture.</li>
+<li>Treating assumptions as facts.</li>
+<li>Asking implementation questions instead of business questions.</li>
+<li>Asking every possible question instead of high-impact ones.</li>
+</ul>
+</div>
+</div>
+
+<div class="card">
+<h2>Decision Tree</h2>
+<pre>
+Do I fully understand the problem?
+          │
+      No ─┴─► Ask CQ
+          │
+         Yes
+          │
+Will assumptions change architecture?
+          │
+      Yes ─┴─► Ask CQ
+          │
+         No
+          │
+ Proceed to Business Objective
+</pre>
+</div>
+</div>
+
+<div class="card tip">
+<h2>Final Learning</h2>
+<ul>
+<li>CQ is the first step in a real system design interview.</li>
+<li>Architects remove ambiguity before discussing requirements.</li>
+<li>Good clarification questions reduce rework and improve design quality.</li>
+<li>The goal is not to ask many questions, but the right questions.</li>
+</ul>
+</div>
+
+</div>
+<footer>System Design Learning Library • Chapter 1 • Clarification Questions</footer>
+</body>
+</html>
