@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Coaching Record - TinyURL High Level Design</title>
+<style>
+body{font-family:Arial;line-height:1.7;max-width:1000px;margin:auto}
+h1{color:#0b5394}
+h2{color:#38761d;border-bottom:1px solid #ddd}
+.question{background:#eef6ff;padding:10px;border-left:5px solid #4a86e8;margin-top:12px}
+.answer{background:#f7fff2;padding:10px;border-left:5px solid #6aa84f}
+.diagnosis{background:#fff8dc;padding:10px;border-left:5px solid orange}
+.refinement{background:#f4f4f4;padding:10px;border-left:5px solid gray}
+.principle{background:#f5ecff;padding:10px;border-left:5px solid purple}
+.newsletter{background:#fef3c7;padding:10px;border-left:5px solid #b8860b}
+</style>
+</head>
+
+<body>
+
+<h1>TinyURL – High Level Design</h1>
+<p><b>Coaching Record</b></p>
+
+<h2>Conversation 1 – Where should a High-Level Design begin?</h2>
+
+<div class="question">
+<b>Coach</b><br>
+You have completed requirement gathering and capacity estimation. Draw the first version of TinyURL.
+Do not think about Redis, Kafka, Load Balancers or database sharding. Build the smallest system that works.
+</div>
+
+<div class="answer">
+<b>Student</b><br>
+Client → URL Receiver → Generate Short URL → Store URL Mapping → Database → Return Short URL.<br><br>
+
+For redirection:<br>
+Client → URL Receiver → Lookup Mapping → Database → Return Long URL.
+</div>
+
+<div class="diagnosis">
+<b>Diagnosis</b><br>
+Excellent architectural discipline. The design started with the minimum viable architecture instead of introducing scalability components prematurely.
+</div>
+
+<div class="refinement">
+<b>Architect Refinement</b><br>
+A High-Level Design should begin with the simplest architecture capable of satisfying the current requirements. Complexity should emerge only when the current design becomes insufficient.
+</div>
+
+<div class="principle">
+<b>Architecture Principle</b><br>
+Start simple. Evolve only when necessary.
+</div>
+
+<div class="newsletter">
+<b>Newsletter Opportunity</b><br>
+Most engineers start with Redis. Architects start with a working system.
+</div>
+
+<hr>
+
+<h2>Conversation 2 – When should multiple application servers be introduced?</h2>
+
+<div class="question">
+<b>Coach</b><br>
+Suppose the number of users grows significantly. When would you introduce multiple URL Receiver instances?
+</div>
+
+<div class="answer">
+<b>Student</b><br>
+That depends on how much load a single URL Receiver can handle. Capacity estimation provides the expected QPS, and profiling the service tells us whether one instance is sufficient.
+</div>
+
+<div class="diagnosis">
+<b>Diagnosis</b><br>
+Strong architectural reasoning. Capacity estimation was correctly used as an input to architectural decisions instead of treating it as an isolated exercise.
+</div>
+
+<div class="refinement">
+<b>Architect Refinement</b><br>
+Capacity estimation answers "How much load should the system expect?" Profiling answers "Can the current architecture sustain that load?" Architecture evolves only when both answers indicate the need.
+</div>
+
+<div class="principle">
+<b>Architecture Principle</b><br>
+Estimate first. Measure second. Scale third.
+</div>
+
+<hr>
+
+<h2>Conversation 3 – Why introduce a Load Balancer?</h2>
+
+<div class="question">
+<b>Coach</b><br>
+Suppose CPU profiling shows sustained saturation and you decide to add five URL Receiver instances. What new architectural problem appears?
+</div>
+
+<div class="answer">
+<b>Student</b><br>
+Once multiple URL Receiver instances exist, requests must be directed to one of them. The system now needs a mechanism to make that routing decision.
+</div>
+
+<div class="diagnosis">
+<b>Diagnosis</b><br>
+The reasoning focused on the underlying problem instead of immediately naming a component. This demonstrates architectural thinking rather than pattern memorization.
+</div>
+
+<div class="refinement">
+<b>Architect Refinement</b><br>
+A Load Balancer is not introduced because multiple servers exist. It is introduced because horizontal scaling creates the request routing problem.
+</div>
+
+<div class="principle">
+<b>Architecture Principle</b><br>
+Components exist to solve problems—not to complete architecture diagrams.
+</div>
+
+<div class="newsletter">
+<b>Newsletter Opportunity</b><br>
+The Load Balancer Is Not the Design. The Routing Problem Is.
+</div>
+
+<hr>
+
+<h2>Conversation 4 – Should the database also have a Load Balancer?</h2>
+
+<div class="question">
+<b>Coach</b><br>
+If application servers require a Load Balancer, should we also place one in front of the database?
+</div>
+
+<div class="answer">
+<b>Student</b><br>
+A single database may eventually become a bottleneck because it must handle all read and write requests. In that situation, distributing requests across multiple databases could help.
+</div>
+
+<div class="diagnosis">
+<b>Diagnosis</b><br>
+The observation is technically correct, but the architectural sequence was premature. The database had not yet been identified as the bottleneck.
+</div>
+
+<div class="refinement">
+<b>Architect Refinement</b><br>
+Do not introduce new components because they might become useful later. First demonstrate that the current design is insufficient using measurable evidence such as CPU utilization, query latency, connection count, or I/O saturation.
+</div>
+
+<div class="principle">
+<b>Architecture Principle</b><br>
+Evidence should drive architecture—not anticipation.
+</div>
+
+<hr>
+
+<h2>Learning Capture</h2>
+
+<ul>
+<li>High-Level Design begins with the simplest working architecture.</li>
+<li>Capacity estimation naturally feeds into architecture decisions.</li>
+<li>Horizontal scaling introduces the request routing problem.</li>
+<li>A Load Balancer is a consequence of horizontal scaling, not a starting component.</li>
+<li>Avoid solving future problems before observing evidence that they exist.</li>
+<li>Architectural evolution should follow the sequence: Problem → Evidence → Decision.</li>
+</ul>
+
+</body>
+</html>
